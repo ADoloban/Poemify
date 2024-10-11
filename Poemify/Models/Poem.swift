@@ -12,4 +12,14 @@ struct Poem: Codable, Hashable {
     let author: String
     let lines: [String]
     let linecount: String
+    
+    func createShareableText() -> String {
+        return """
+        Title: \(self.title)
+        
+        by \(self.author)
+        
+        \(self.lines.joined(separator: "\n"))
+        """
+    }
 }
