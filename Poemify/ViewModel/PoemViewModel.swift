@@ -10,10 +10,11 @@ class PoemViewModel: ObservableObject {
     @Published var poems: [Poem] = []
     private var poetryService = PoemAPIService()
 
-    func fetchAllPoems() {
+    func fetchAllPoems(completion: @escaping () -> Void) {
         poetryService.fetchPoems(requestType: .allPoems) { [weak self] poems in
             DispatchQueue.main.async {
                 self?.poems = poems
+                completion()  
             }
         }
     }
