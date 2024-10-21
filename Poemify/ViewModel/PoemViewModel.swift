@@ -8,21 +8,31 @@ import Foundation
 
 class PoemViewModel: ObservableObject {
     @Published var poems: [Poem] = []
+    @Published var errorMessage: String? = nil
+    
     private var poetryService = PoemAPIService()
-
+    
     func fetchAllPoems(completion: @escaping () -> Void) {
         poetryService.fetchPoems(requestType: .allPoems) { [weak self] poems in
             DispatchQueue.main.async {
-                self?.poems = poems
-                completion()  
+                if poems.isEmpty {
+                    self?.errorMessage = "No poems available at the moment."
+                } else {
+                    self?.poems = poems
+                }
+                completion()
             }
         }
     }
 
     func searchPoems(author: String? = nil, title: String? = nil, numberOfLines: Int? = nil, resultCount: Int? = nil, random: Bool = false) {
-        poetryService.fetchPoems(requestType: .search(author: author, title: title, numberOfLines: numberOfLines, resultCount: resultCount, random: random)) { [weak self] poems in
+        poetryService.fetchPoems(requestType: .search(author: author, title: title, numberOfLines: numberOfLines, poemCount: resultCount)) { [weak self] poems in
             DispatchQueue.main.async {
-                self?.poems = poems
+                if poems.isEmpty {
+                    self?.errorMessage = "No poems found for the given criteria."
+                } else {
+                    self?.poems = poems
+                }
             }
         }
     }

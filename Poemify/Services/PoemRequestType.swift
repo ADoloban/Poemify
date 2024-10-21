@@ -9,5 +9,5 @@ import Foundation
 
 enum PoemRequestType {
     case allPoems
-    case search(author: String?, title: String?, numberOfLines: Int?, resultCount: Int?, random: Bool)
+    case search(author: String?, title: String?, numberOfLines: Int?, poemCount: Int?)
 }

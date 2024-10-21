@@ -24,7 +24,7 @@ struct PoemCell: View {
                 
                 Spacer()  // Додаємо відступ між автором і кількістю рядків
                 
-                Text("\(poem.lines.count) lines")
+                Text("\(poem.cleanedLines.count) lines")
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
