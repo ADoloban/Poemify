@@ -10,15 +10,27 @@ import SwiftUI
 struct PoemDetailView: View {
     var poem: Poem
     @State private var isShareSheetShowing = false
+    @EnvironmentObject var viewModel: SavedPoemsViewModel
     
     var body: some View {
         ScrollView {
             VStack(alignment: .center, spacing: 16) {
                 
-                Text(poem.title)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
+                HStack {
+                    Text(poem.title)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                    
+                    // Bookmark button поруч із назвою
+                    Button(action: {
+                        toggleBookmark()
+                    }) {
+                        Image(systemName: viewModel.isPoemSaved(poem) ? "bookmark.fill" : "bookmark")
+                            .foregroundColor(.gray)
+                            .font(.system(size: 24))
+                    }
+                }
                     
                 Text(poem.author)
                     .font(.title3)
@@ -52,13 +64,24 @@ struct PoemDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {
-                    isShareSheetShowing = true
-                }) {
-                    Image(systemName: "square.and.arrow.up")
-                        .foregroundColor(.blue)
+                HStack {
+                    // Share button
+                    Button(action: {
+                        isShareSheetShowing = true
+                    }) {
+                        Image(systemName: "square.and.arrow.up")
+                            .foregroundColor(.blue)
+                    }
                 }
             }
+        }
+    }
+    
+    private func toggleBookmark() {
+        if viewModel.isPoemSaved(poem) {
+            viewModel.removePoem(poem) // Видаляємо, якщо вже збережений
+        } else {
+            viewModel.addPoem(poem) // Додаємо вірш
         }
     }
 }
