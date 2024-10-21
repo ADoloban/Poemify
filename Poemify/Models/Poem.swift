@@ -22,4 +22,10 @@ struct Poem: Codable, Hashable {
         \(self.lines.joined(separator: "\n"))
         """
     }
+    
+    var cleanedLines: [String] {
+        lines
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+    }
 }

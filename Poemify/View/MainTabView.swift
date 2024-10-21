@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @EnvironmentObject var viewModel: SavedPoemsViewModel
+    
     var body: some View {
         TabView {
             NavigationView {
                 ContentView()
+                    .environmentObject(viewModel)
             }
             .tabItem {
                 Image(systemName: "house.fill")
@@ -20,9 +23,10 @@ struct MainTabView: View {
             
             NavigationView {
                 SavedPoemsView()
+                    .environmentObject(viewModel) 
             }
             .tabItem {
-                Image(systemName: "heart.fill")
+                Image(systemName: "bookmark.fill")
                 Text("Saved")
             }
         }

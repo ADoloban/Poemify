@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var viewModel = PoemViewModel()
+    @EnvironmentObject var savedPoemsViewModel: SavedPoemsViewModel
+    
     @State private var isSearchActive = false
     @State private var isSettingsActive = false
     @State private var isLoading = true
@@ -16,22 +18,39 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if isLoading {
-                // Показуємо індикатор завантаження, якщо дані ще не завантажені
                 ProgressView("Loading Poems...")
                     .progressViewStyle(CircularProgressViewStyle())
-                    .scaleEffect(1.5)  // Збільшуємо розмір індикатора
+                    .scaleEffect(1.5)
             } else {
-                // Відображаємо список віршів після завантаження даних
-                List(viewModel.poems, id: \.self) { poem in
-                    PoemCell(poem: poem)
-                        .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                        .background(NavigationLink("", destination: PoemDetailView(poem: poem)))
+                if let errorMessage = viewModel.errorMessage {
+                    ContentUnavailableView {
+                        Label("No Results", systemImage: "magnifyingglass")
+                    } description: {
+                        Text(errorMessage)
+                    }
+                } else if viewModel.poems.isEmpty {
+                    ContentUnavailableView.search
+                } else {
+                    List(viewModel.poems, id: \.self) { poem in
+                        PoemCell(poem: poem)
+                            .padding(.vertical, 10)
+                            .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                            .background(
+                                NavigationLink("", destination: PoemDetailView(poem: poem)
+                                    .environmentObject(viewModel)
+                                    .environmentObject(savedPoemsViewModel)
+                                )
+                            )
+                    }
+                    .listStyle(PlainListStyle())
                 }
             }
         }
         .onAppear {
             viewModel.fetchAllPoems {
-                isLoading = false
+                withAnimation {
+                    isLoading = false
+                }
             }
         }
         .navigationTitle("Poems")
@@ -45,7 +64,7 @@ struct ContentView: View {
                         .font(.system(size: 18))
                 }
             }
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
                     isSettingsActive = true
                 }) {
@@ -53,15 +72,31 @@ struct ContentView: View {
                         .font(.system(size: 18))
                 }
             }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    reloadPoems()
+                }) {
+                    Image(systemName: "arrow.clockwise")
+                        .font(.system(size: 18))
+                }
+            }
         }
         .sheet(isPresented: $isSearchActive) {
-            SearchView(viewModel: viewModel)
+            SearchView(isSearchActive: $isSearchActive, viewModel: viewModel)
         }
         .sheet(isPresented: $isSettingsActive) {
             SettingsView()  
         }
     }
     
+    private func reloadPoems() {
+            isLoading = true
+            viewModel.fetchAllPoems {
+                withAnimation {
+                    isLoading = false
+                }
+            }
+    }
 }
 
 #Preview {
