@@ -22,6 +22,7 @@
 		D962807E2CB8880900AE3F2F /* PoemRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D962807D2CB8880900AE3F2F /* PoemRequestType.swift */; };
 		D96280802CB88A2C00AE3F2F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D962807F2CB88A2C00AE3F2F /* SearchView.swift */; };
 		D96280822CB91E4E00AE3F2F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96280812CB91E4E00AE3F2F /* SettingsView.swift */; };
+		D9F019642CC15A6E00089CF8 /* SavedPoemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F019632CC15A6E00089CF8 /* SavedPoemsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		D962807D2CB8880900AE3F2F /* PoemRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemRequestType.swift; sourceTree = "<group>"; };
 		D962807F2CB88A2C00AE3F2F /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D96280812CB91E4E00AE3F2F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D9F019632CC15A6E00089CF8 /* SavedPoemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPoemsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				D962806C2CB6647600AE3F2F /* PoemViewModel.swift */,
+				D9F019632CC15A6E00089CF8 /* SavedPoemsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				D96280802CB88A2C00AE3F2F /* SearchView.swift in Sources */,
 				D96280782CB7E99A00AE3F2F /* ActivityViewController.swift in Sources */,
 				D96280592CB5C1F600AE3F2F /* PoemifyApp.swift in Sources */,
+				D9F019642CC15A6E00089CF8 /* SavedPoemsViewModel.swift in Sources */,
 				D962806D2CB6647600AE3F2F /* PoemViewModel.swift in Sources */,
 				D96280692CB65CA400AE3F2F /* PoemAPIService.swift in Sources */,
 				D962806B2CB6641200AE3F2F /* PoemCell.swift in Sources */,
@@ -354,8 +358,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,8 +386,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
