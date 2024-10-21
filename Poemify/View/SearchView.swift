@@ -4,56 +4,99 @@
 //
 //  Created by Artem Doloban on 11.10.2024.
 //
-
 import SwiftUI
 
 struct SearchView: View {
-    @ObservedObject var viewModel: PoemViewModel  // Доступ до ViewModel
-    @State private var author = ""
-    @State private var title = ""
+    @Binding var isSearchActive: Bool
+    @ObservedObject var viewModel: PoemViewModel
+
+    @State private var author: String = ""
+    @State private var title: String = ""
     @State private var numberOfLines: String = ""
     @State private var resultCount: String = ""
-    @State private var random = false
+    @State private var returnRandomPoems: Bool = false
+    @State private var keyboardOffset: CGFloat = 0  // Відступ для клавіатури
 
-    @Environment(\.presentationMode) var presentationMode
-    
     var body: some View {
         NavigationView {
-            Form {
-                Section(header: Text("Search settings")) {
-                    TextField("Author", text: $author)
-                    TextField("Title", text: $title)
-                    TextField("Number of lines", text: $numberOfLines)
-                        .keyboardType(.numberPad)
-                    TextField("Result count", text: $resultCount)
-                        .keyboardType(.numberPad)
-                    Toggle("Return random poems?", isOn: $random)
+            ScrollView {
+                VStack(spacing: 20) {
+                    Text("Search settings")
+                        .font(.title2.bold())
+                        .foregroundColor(.primary)
+                        .padding(.bottom, 8)
+
+                    // Поля вводу з покращеним стилем
+                    CustomTextField(placeholder: "Author", text: $author)
+                    CustomTextField(placeholder: "Title", text: $title)
+                    CustomTextField(placeholder: "Number of lines", text: $numberOfLines, keyboardType: .numberPad)
+                    CustomTextField(placeholder: "Result count", text: $resultCount, keyboardType: .numberPad)
+
+                    // Кнопка пошуку
+                    Button(action: {
+                        performSearch()
+                        isSearchActive = false
+                    }) {
+                        Text("Search")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .padding(.horizontal, 16)
+                    }
+                    .padding(.top, 8)
+
+                    Spacer()
                 }
-                
-                Button(action: {
-                    let lines = Int(numberOfLines)
-                    let count = Int(resultCount)
-                    
-                    viewModel.searchPoems(author: author.isEmpty ? nil : author,
-                                          title: title.isEmpty ? nil : title,
-                                          numberOfLines: lines,
-                                          resultCount: count,
-                                          random: random)
-                    
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Text("Search")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                .padding()
+                .padding(.bottom, keyboardOffset)
+            }
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        isSearchActive = false
+                    }
                 }
             }
-            .navigationTitle("Search Poems")
-            .navigationBarItems(trailing: Button("Close") {
-                presentationMode.wrappedValue.dismiss()
-            })
         }
     }
+
+    func performSearch() {
+        viewModel.searchPoems(
+            author: author,
+            title: title,
+            numberOfLines: Int(numberOfLines),
+            resultCount: Int(resultCount),
+            random: returnRandomPoems
+        )
+    }
+
+
+}
+
+struct CustomTextField: View {
+    let placeholder: String
+    @Binding var text: String
+    var keyboardType: UIKeyboardType = .default
+
+    var body: some View {
+        TextField(placeholder, text: $text)
+            .padding()
+            .background(Color.clear)
+            .cornerRadius(10)
+            .font(.system(size: 18))
+            .fontWeight(.bold)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray, lineWidth: 1)
+            )
+            .foregroundStyle(.gray)
+            .keyboardType(keyboardType)
+            .padding(.horizontal, 16)
+    }
+}
+
+#Preview {
+    SearchView(isSearchActive: .constant(true), viewModel: PoemViewModel())
 }
