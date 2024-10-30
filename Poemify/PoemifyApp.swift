@@ -9,12 +9,18 @@ import SwiftUI
 
 @main
 struct PoemifyApp: App {
-    @StateObject private var viewModel = SavedPoemsViewModel()
+    @StateObject private var collectionsViewModel = PoemCollectionsViewModel()
+    @AppStorage("isLoggedIn") private var isLoggedIn = false 
     
     var body: some Scene {
         WindowGroup {
-            MainTabView()
-                .environmentObject(viewModel) 
+            if isLoggedIn {
+                MainTabView()
+                    .environmentObject(collectionsViewModel)
+            } else {
+                LoginView()
+                    .environmentObject(collectionsViewModel)
+            }
         }
     }
 }
