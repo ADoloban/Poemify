@@ -16,50 +16,59 @@ struct SearchView: View {
     @State private var resultCount: String = ""
     @State private var returnRandomPoems: Bool = false
     @State private var keyboardOffset: CGFloat = 0
-
+    
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 20) {
-                    Text("Search settings")
-                        .font(.title2.bold())
-                        .foregroundColor(.primary)
-                        .padding(.bottom, 8)
-
-                    CustomTextField(placeholder: "Author", text: $author)
-                    CustomTextField(placeholder: "Title", text: $title)
-                    CustomTextField(placeholder: "Number of lines", text: $numberOfLines, keyboardType: .numberPad)
-                    CustomTextField(placeholder: "Result count", text: $resultCount, keyboardType: .numberPad)
-
-                    Button(action: {
-                        performSearch()
-                        isSearchActive = false
-                    }) {
-                        Text("Search")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                            .padding(.horizontal, 16)
+            ZStack {
+                LinearGradient(
+                    gradient: Gradient(colors: [Color("01204E"), Color("257180")]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
+                
+                ScrollView {
+                    VStack(spacing: 40) {
+                        Text("Search settings")
+                            .foregroundStyle(Color("EBE3D5"))
+                            .font(.system(size: 40, weight: .bold, design: .rounded))
+                            .padding(.top, 40)
+                        
+                        VStack(spacing: 40) {
+                            CustomTextField(placeholder: "Author", text: $author)
+                            CustomTextField(placeholder: "Title", text: $title)
+                            CustomTextField(placeholder: "Number of lines", text: $numberOfLines, keyboardType: .numberPad)
+                            CustomTextField(placeholder: "Result count", text: $resultCount, keyboardType: .numberPad)
+                        }
+                        .padding(.top, 30)
+                        
+                        Button(action: {
+                            viewModel.errorMessage = nil
+                            performSearch()
+                            isSearchActive = false
+                            
+                        }) {
+                            Text("Search")
+                                .frame(width: 150)
+                                .padding(15)
+                                .background(author.isEmpty && title.isEmpty && numberOfLines.isEmpty && resultCount.isEmpty ? Color("5F6F65") : Color("FD8B51"))
+                                .font(.system(size: 25, weight: .bold, design: .rounded))
+                                .cornerRadius(20)
+                                .foregroundStyle(Color("EBE3D5"))
+                        }
+                        .disabled(author.isEmpty && title.isEmpty && numberOfLines.isEmpty && resultCount.isEmpty)
+                        .padding(.top, 20)
+                        
+                        Spacer()
                     }
-                    .padding(.top, 8)
-
-                    Spacer()
+                    .padding()
+                    .padding(.bottom, keyboardOffset)
                 }
-                .padding()
-                .padding(.bottom, keyboardOffset)
-            }
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        isSearchActive = false
-                    }
-                }
+                .scrollIndicators(.hidden)
             }
         }
     }
-
+    
     func performSearch() {
         viewModel.searchPoems(
             author: author,
@@ -79,19 +88,24 @@ struct CustomTextField: View {
     var keyboardType: UIKeyboardType = .default
 
     var body: some View {
-        TextField(placeholder, text: $text)
-            .padding()
-            .background(Color.clear)
-            .cornerRadius(10)
-            .font(.system(size: 18))
-            .fontWeight(.bold)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.gray, lineWidth: 1)
-            )
-            .foregroundStyle(.gray)
-            .keyboardType(keyboardType)
-            .padding(.horizontal, 16)
+        VStack(spacing: 10) {
+            TextField("", text: $text)
+                .foregroundStyle(Color("EBE3D5"))
+                .textFieldStyle(.plain)
+                .autocapitalization(.none)
+                .keyboardType(keyboardType)
+                .placeholder(when: text.isEmpty) {
+                    Text(placeholder)
+                        .foregroundStyle(Color("EBE3D5"))
+                        .bold()
+                }
+                .font(.system(size: 25, weight: .bold, design: .rounded))
+            
+            Rectangle()
+                .frame(width: 350, height: 2)
+                .foregroundStyle(Color("EBE3D5"))
+        }
+        .frame(width: 350)
     }
 }
 
