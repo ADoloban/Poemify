@@ -17,6 +17,7 @@ struct CreatePoemView: View {
     @State private var poemText: String = ""
     
     var body: some View {
+        
         NavigationView {
             VStack {
                 TextField("Title", text: $title)
@@ -60,20 +61,15 @@ struct CreatePoemView: View {
             }
         }
     }
+
     
     private func savePoem() {
         let lines = poemText.split(separator: "\n").map(String.init)
         let poemAuthor = author.isEmpty ? "Your own poem" : author
         let newPoem = Poem(title: title, author: poemAuthor, lines: lines, linecount: "\(lines.count)")
         
-        // Додаємо новий вірш до колекції
         collectionsViewModel.addPoem(newPoem, to: collection)
-        
         dismiss()
     }
 }
 
-#Preview {
-    CreatePoemView(collection: PoemCollection(name: "Example"))
-        .environmentObject(PoemCollectionsViewModel())
-}

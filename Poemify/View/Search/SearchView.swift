@@ -15,7 +15,7 @@ struct SearchView: View {
     @State private var numberOfLines: String = ""
     @State private var resultCount: String = ""
     @State private var returnRandomPoems: Bool = false
-    @State private var keyboardOffset: CGFloat = 0  // Відступ для клавіатури
+    @State private var keyboardOffset: CGFloat = 0
 
     var body: some View {
         NavigationView {
@@ -26,13 +26,11 @@ struct SearchView: View {
                         .foregroundColor(.primary)
                         .padding(.bottom, 8)
 
-                    // Поля вводу з покращеним стилем
                     CustomTextField(placeholder: "Author", text: $author)
                     CustomTextField(placeholder: "Title", text: $title)
                     CustomTextField(placeholder: "Number of lines", text: $numberOfLines, keyboardType: .numberPad)
                     CustomTextField(placeholder: "Result count", text: $resultCount, keyboardType: .numberPad)
 
-                    // Кнопка пошуку
                     Button(action: {
                         performSearch()
                         isSearchActive = false

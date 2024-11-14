@@ -15,10 +15,9 @@ class PoemAPIService {
         var tempUrl = [String]()
         var resultUrl: String
         
-        // Визначаємо URL на основі типу запиту
         switch requestType {
         case .allPoems:
-            resultUrl = "\(baseURL)/author/ "  // Викликаємо API для отримання всіх віршів
+            resultUrl = "\(baseURL)/author/ "  
         case .search(let author, let title, let linecount, let poemcount):
             
             if let title, !title.isEmpty {

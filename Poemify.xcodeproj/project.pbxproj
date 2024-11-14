@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		D90D92A92CD21DF800683B86 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90D92A82CD21DF800683B86 /* LoginView.swift */; };
 		D90D92AB2CD21E3400683B86 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90D92AA2CD21E3400683B86 /* RegistrationView.swift */; };
-		D90D92AD2CD2795600683B86 /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = D90D92AC2CD2795600683B86 /* GoogleService-Info-2.plist */; };
+		D90D92AD2CD2795600683B86 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D90D92AC2CD2795600683B86 /* GoogleService-Info.plist */; };
+		D90D92B02CD281C500683B86 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D90D92AF2CD281C500683B86 /* FirebaseAuth */; };
+		D90D92B22CD281C500683B86 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D90D92B12CD281C500683B86 /* FirebaseDatabase */; };
+		D90D92B42CD281C500683B86 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D90D92B32CD281C500683B86 /* FirebaseFirestore */; };
 		D96280592CB5C1F600AE3F2F /* PoemifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96280582CB5C1F600AE3F2F /* PoemifyApp.swift */; };
-		D962805B2CB5C1F600AE3F2F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D962805A2CB5C1F600AE3F2F /* ContentView.swift */; };
+		D962805B2CB5C1F600AE3F2F /* PoemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D962805A2CB5C1F600AE3F2F /* PoemsView.swift */; };
 		D962805D2CB5C1F700AE3F2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D962805C2CB5C1F700AE3F2F /* Assets.xcassets */; };
 		D96280602CB5C1F700AE3F2F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D962805F2CB5C1F700AE3F2F /* Preview Assets.xcassets */; };
 		D96280672CB65A9900AE3F2F /* Poem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96280662CB65A9900AE3F2F /* Poem.swift */; };
@@ -35,10 +38,10 @@
 /* Begin PBXFileReference section */
 		D90D92A82CD21DF800683B86 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D90D92AA2CD21E3400683B86 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
-		D90D92AC2CD2795600683B86 /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-2.plist"; sourceTree = "<group>"; };
+		D90D92AC2CD2795600683B86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D96280552CB5C1F600AE3F2F /* Poemify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Poemify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D96280582CB5C1F600AE3F2F /* PoemifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemifyApp.swift; sourceTree = "<group>"; };
-		D962805A2CB5C1F600AE3F2F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D962805A2CB5C1F600AE3F2F /* PoemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemsView.swift; sourceTree = "<group>"; };
 		D962805C2CB5C1F700AE3F2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D962805F2CB5C1F700AE3F2F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D96280662CB65A9900AE3F2F /* Poem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poem.swift; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		D962807D2CB8880900AE3F2F /* PoemRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemRequestType.swift; sourceTree = "<group>"; };
 		D962807F2CB88A2C00AE3F2F /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D96280812CB91E4E00AE3F2F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D9729A2A2CD8D09D007891D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D9F019652CC642DB00089CF8 /* PoemCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemCollection.swift; sourceTree = "<group>"; };
 		D9F019672CC6437B00089CF8 /* PoemCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemCollectionViewModel.swift; sourceTree = "<group>"; };
 		D9F0196A2CC64A8400089CF8 /* CollectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsView.swift; sourceTree = "<group>"; };
@@ -64,12 +68,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D90D92B22CD281C500683B86 /* FirebaseDatabase in Frameworks */,
+				D90D92B02CD281C500683B86 /* FirebaseAuth in Frameworks */,
+				D90D92B42CD281C500683B86 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D90D92B52CD4FF9700683B86 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				D90D92A82CD21DF800683B86 /* LoginView.swift */,
+				D90D92AA2CD21E3400683B86 /* RegistrationView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		D962804C2CB5C1F600AE3F2F = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +105,7 @@
 		D96280572CB5C1F600AE3F2F /* Poemify */ = {
 			isa = PBXGroup;
 			children = (
+				D9729A2A2CD8D09D007891D8 /* Info.plist */,
 				D96280712CB6778200AE3F2F /* Services */,
 				D96280702CB676FD00AE3F2F /* View */,
 				D962806F2CB675BD00AE3F2F /* ViewModel */,
@@ -96,7 +113,7 @@
 				D96280582CB5C1F600AE3F2F /* PoemifyApp.swift */,
 				D962805C2CB5C1F700AE3F2F /* Assets.xcassets */,
 				D962805E2CB5C1F700AE3F2F /* Preview Content */,
-				D90D92AC2CD2795600683B86 /* GoogleService-Info-2.plist */,
+				D90D92AC2CD2795600683B86 /* GoogleService-Info.plist */,
 			);
 			path = Poemify;
 			sourceTree = "<group>";
@@ -136,8 +153,7 @@
 				D9F019722CCB991600089CF8 /* Main */,
 				D9F019732CCB9B6C00089CF8 /* Collection */,
 				D9F019742CCB9BA800089CF8 /* Search */,
-				D90D92A82CD21DF800683B86 /* LoginView.swift */,
-				D90D92AA2CD21E3400683B86 /* RegistrationView.swift */,
+				D90D92B52CD4FF9700683B86 /* Authentication */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -156,7 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				D962807B2CB866D300AE3F2F /* MainTabView.swift */,
-				D962805A2CB5C1F600AE3F2F /* ContentView.swift */,
+				D962805A2CB5C1F600AE3F2F /* PoemsView.swift */,
 				D96280752CB69B2700AE3F2F /* PoemDetailView.swift */,
 			);
 			path = Main;
@@ -236,6 +252,11 @@
 			dependencies = (
 			);
 			name = Poemify;
+			packageProductDependencies = (
+				D90D92AF2CD281C500683B86 /* FirebaseAuth */,
+				D90D92B12CD281C500683B86 /* FirebaseDatabase */,
+				D90D92B32CD281C500683B86 /* FirebaseFirestore */,
+			);
 			productName = Poemify;
 			productReference = D96280552CB5C1F600AE3F2F /* Poemify.app */;
 			productType = "com.apple.product-type.application";
@@ -264,6 +285,9 @@
 				Base,
 			);
 			mainGroup = D962804C2CB5C1F600AE3F2F;
+			packageReferences = (
+				D90D92AE2CD281C500683B86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = D96280562CB5C1F600AE3F2F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -280,7 +304,7 @@
 			files = (
 				D96280602CB5C1F700AE3F2F /* Preview Assets.xcassets in Resources */,
 				D962805D2CB5C1F700AE3F2F /* Assets.xcassets in Resources */,
-				D90D92AD2CD2795600683B86 /* GoogleService-Info-2.plist in Resources */,
+				D90D92AD2CD2795600683B86 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D962805B2CB5C1F600AE3F2F /* ContentView.swift in Sources */,
+				D962805B2CB5C1F600AE3F2F /* PoemsView.swift in Sources */,
 				D9F019682CC6437B00089CF8 /* PoemCollectionViewModel.swift in Sources */,
 				D96280762CB69B2700AE3F2F /* PoemDetailView.swift in Sources */,
 				D96280672CB65A9900AE3F2F /* Poem.swift in Sources */,
@@ -447,6 +471,7 @@
 				DEVELOPMENT_TEAM = VY5J3YN9DS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Poemify/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -475,6 +500,7 @@
 				DEVELOPMENT_TEAM = VY5J3YN9DS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Poemify/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -514,6 +540,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D90D92AE2CD281C500683B86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D90D92AF2CD281C500683B86 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D90D92AE2CD281C500683B86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		D90D92B12CD281C500683B86 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D90D92AE2CD281C500683B86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		D90D92B32CD281C500683B86 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D90D92AE2CD281C500683B86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D962804D2CB5C1F600AE3F2F /* Project object */;
 }

@@ -50,7 +50,6 @@ struct CollectionView: View {
                 }
             }
             
-            // Кнопка в правому нижньому кутку
             VStack {
                 Spacer()
                 HStack {

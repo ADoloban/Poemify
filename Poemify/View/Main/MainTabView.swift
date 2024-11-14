@@ -7,34 +7,68 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct MainTabView: View {
-    @EnvironmentObject var viewModel: PoemCollectionsViewModel
+    @EnvironmentObject var collectionsViewModel: PoemCollectionsViewModel
+    @StateObject var poemViewModel = PoemViewModel()
+    @State private var selectedTab = 0
+
     
     var body: some View {
-        TabView {
-            NavigationView {
-                ContentView()
-                    .environmentObject(viewModel)
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [Color("01204E"), Color("257180")]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+            VStack {
+                
+                if selectedTab == 0 {
+                    NavigationView {
+                        PoemsView()
+                            .environmentObject(collectionsViewModel)
+                            .environmentObject(poemViewModel)
+                    }
+                } else {
+                    NavigationView {
+                        CollectionsView()
+                            .environmentObject(collectionsViewModel)
+                    }
+                }
+                
+                HStack(spacing: 40) {
+                    CustomTabItem(imageName: "house.fill", title: "Poems", isActive: selectedTab == 0) {
+                        selectedTab = 0
+                    }
+                    CustomTabItem(imageName: "bookmark.fill", title: "Collections", isActive: selectedTab == 1) {
+                        selectedTab = 1
+                    }
+                    
+                }
+                .shadow(radius: 10)
             }
-            .tabItem {
-                Image(systemName: "house.fill")
-                Text("Poems")
-            }
-            
-            NavigationView {
-                CollectionsView()
-                    .environmentObject(viewModel)
-            }
-            .tabItem {
-                Image(systemName: "bookmark.fill")
-                Text("Collections")
+            .onAppear {
+                collectionsViewModel.loadCollectionsFromFirestore()
             }
         }
     }
-}
-
-#Preview {
-    MainTabView()
+    
+    func CustomTabItem(imageName: String, title: String, isActive: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            VStack {
+                Image(systemName: imageName)
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(isActive ? Color("257180") : Color("C6EBC5"))
+                Text(title)
+                    .font(.system(size: 12))
+                    .foregroundColor(isActive ? Color("257180") : Color("C6EBC5"))
+            }
+            .padding(.vertical, 5)
+            .frame(maxWidth: .infinity)
+            .background(isActive ? Color("C6EBC5") : Color.clear)
+            .cornerRadius(20)
+        }
+        .frame(width: 120)
+    }
 }

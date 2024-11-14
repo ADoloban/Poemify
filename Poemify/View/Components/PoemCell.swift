@@ -13,35 +13,41 @@ struct PoemCell: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(poem.title)
-                .font(.title3)
-                .fontWeight(.bold)
-                .foregroundColor(.primary)
+                .font(.system(size: 20, weight: .bold, design: .rounded))
+                .foregroundColor(Color("01204E"))
             
             HStack {
                 Text("\(poem.author)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                
-                Spacer()  // Додаємо відступ між автором і кількістю рядків
-                
+                Spacer()
                 Text("\(poem.cleanedLines.count) lines")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
             }
+            .font(.callout)
+            .foregroundColor(Color("5F6F65"))
             
-            Divider()  // Додаємо розділювач для візуальної сегментації
+            Divider()
+                .background(Color("5F6F65"))
             
-            // Для прикладу виведемо кілька рядків із вірша
             Text(poem.lines.prefix(3).map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.joined(separator: "\n"))
-                .font(.body)
+                .font(.system(size: 17))
+                .italic()
                 .foregroundColor(.primary)
                 .lineLimit(3)
             
         }
-        .padding()  // Додаємо відступи для кращої візуалізації
-        .background(Color(.systemGray6))  // Тло для клітинки
-        .cornerRadius(10)  // Закруглення кутів
-        .shadow(radius: 2)  // Тінь для кращого вигляду
+        .padding()
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [Color("9BB0C1"), Color("C6EBC5")]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        )
+        .cornerRadius(10)
+        .shadow(radius: 2)
         .frame(maxWidth: .infinity)
     }
+}
+
+#Preview {
+    PoemCell(poem: Poem(title: "fgf", author: "fgdg", lines: ["sggfd", "gfd", "gfd"], linecount: "45"))
 }

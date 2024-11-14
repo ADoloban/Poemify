@@ -12,6 +12,10 @@ class PoemViewModel: ObservableObject {
     
     private var poetryService = PoemAPIService()
     
+    init() {
+        fetchAllPoems {} 
+    }
+    
     func fetchAllPoems(completion: @escaping () -> Void) {
         poetryService.fetchPoems(requestType: .allPoems) { [weak self] poems in
             DispatchQueue.main.async {

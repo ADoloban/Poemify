@@ -36,14 +36,12 @@ struct CollectionsView: View {
         .overlay {
             ZStack {
                 if isAddingNewCollection {
-                    // Фон із затемненням позаду модального вікна
                     Color.black.opacity(0.4)
                         .edgesIgnoringSafeArea(.all)
                         .onTapGesture {
                             isAddingNewCollection = false
                         }
                     
-                    // Вікно посередині
                     VStack {
                         Text("Create New Collection")
                             .font(.headline)

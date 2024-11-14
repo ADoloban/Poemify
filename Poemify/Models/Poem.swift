@@ -28,4 +28,6 @@ struct Poem: Codable, Hashable {
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             .filter { !$0.isEmpty }
     }
+    
 }
+
