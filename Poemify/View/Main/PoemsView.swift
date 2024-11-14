@@ -89,8 +89,6 @@ struct PoemsView: View {
                                 .foregroundColor(Color("C6EBC5"))
                                 .font(.system(size: 20, weight: .heavy, design: .rounded))
                         }
-                    } else if viewModel.poems.isEmpty {
-                        ContentUnavailableView.search
                     } else {
                         ScrollView {
                             LazyVStack(spacing: 10) {
@@ -134,6 +132,7 @@ struct PoemsView: View {
     }
     
     private func reloadPoems() {
+        viewModel.errorMessage = nil
         isLoading = true
         viewModel.fetchAllPoems {
             withAnimation {
