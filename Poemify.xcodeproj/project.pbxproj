@@ -27,6 +27,8 @@
 		D962807E2CB8880900AE3F2F /* PoemRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D962807D2CB8880900AE3F2F /* PoemRequestType.swift */; };
 		D96280802CB88A2C00AE3F2F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D962807F2CB88A2C00AE3F2F /* SearchView.swift */; };
 		D96280822CB91E4E00AE3F2F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96280812CB91E4E00AE3F2F /* SettingsView.swift */; };
+		D9B3E2E02CE6851D002FE097 /* ChangeCredentialsModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B3E2DF2CE6851D002FE097 /* ChangeCredentialsModalView.swift */; };
+		D9B3E2E32CE6AC48002FE097 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B3E2E22CE6AC48002FE097 /* AuthService.swift */; };
 		D9F019662CC642DB00089CF8 /* PoemCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F019652CC642DB00089CF8 /* PoemCollection.swift */; };
 		D9F019682CC6437B00089CF8 /* PoemCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F019672CC6437B00089CF8 /* PoemCollectionViewModel.swift */; };
 		D9F0196B2CC64A8400089CF8 /* CollectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F0196A2CC64A8400089CF8 /* CollectionsView.swift */; };
@@ -55,6 +57,8 @@
 		D962807F2CB88A2C00AE3F2F /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D96280812CB91E4E00AE3F2F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D9729A2A2CD8D09D007891D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D9B3E2DF2CE6851D002FE097 /* ChangeCredentialsModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCredentialsModalView.swift; sourceTree = "<group>"; };
+		D9B3E2E22CE6AC48002FE097 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		D9F019652CC642DB00089CF8 /* PoemCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemCollection.swift; sourceTree = "<group>"; };
 		D9F019672CC6437B00089CF8 /* PoemCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemCollectionViewModel.swift; sourceTree = "<group>"; };
 		D9F0196A2CC64A8400089CF8 /* CollectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsView.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				D96280682CB65CA400AE3F2F /* PoemAPIService.swift */,
 				D96280772CB7E99A00AE3F2F /* ActivityViewController.swift */,
 				D962807D2CB8880900AE3F2F /* PoemRequestType.swift */,
+				D9B3E2E22CE6AC48002FE097 /* AuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				D96280812CB91E4E00AE3F2F /* SettingsView.swift */,
+				D9B3E2DF2CE6851D002FE097 /* ChangeCredentialsModalView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -320,6 +326,8 @@
 				D96280762CB69B2700AE3F2F /* PoemDetailView.swift in Sources */,
 				D96280672CB65A9900AE3F2F /* Poem.swift in Sources */,
 				D9F019662CC642DB00089CF8 /* PoemCollection.swift in Sources */,
+				D9B3E2E32CE6AC48002FE097 /* AuthService.swift in Sources */,
+				D9B3E2E02CE6851D002FE097 /* ChangeCredentialsModalView.swift in Sources */,
 				D96280802CB88A2C00AE3F2F /* SearchView.swift in Sources */,
 				D9F0196D2CC6504B00089CF8 /* CollectionView.swift in Sources */,
 				D9F0197D2CCBBBE700089CF8 /* CreatePoemView.swift in Sources */,
