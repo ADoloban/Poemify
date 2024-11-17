@@ -51,7 +51,7 @@ struct ChangePasswordModalView: View {
                 .padding(.top, 20)
             }
             .frame(width: 300, height: 250)
-            .background(Color("C6EBC5").opacity(0.4))
+            .background(Color(.white).opacity(0.4))
             .cornerRadius(20)
             .shadow(radius: 10)
             .overlay(
