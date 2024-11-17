@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D90A9A7A2CEA5CC000CB08A6 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90A9A792CEA5CC000CB08A6 /* CollectionCell.swift */; };
+		D90A9A7C2CEA720900CB08A6 /* CreateCollectionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90A9A7B2CEA720900CB08A6 /* CreateCollectionModalView.swift */; };
 		D90D92A92CD21DF800683B86 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90D92A82CD21DF800683B86 /* LoginView.swift */; };
 		D90D92AB2CD21E3400683B86 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90D92AA2CD21E3400683B86 /* RegistrationView.swift */; };
 		D90D92AD2CD2795600683B86 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D90D92AC2CD2795600683B86 /* GoogleService-Info.plist */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D90A9A792CEA5CC000CB08A6 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		D90A9A7B2CEA720900CB08A6 /* CreateCollectionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCollectionModalView.swift; sourceTree = "<group>"; };
 		D90D92A82CD21DF800683B86 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D90D92AA2CD21E3400683B86 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		D90D92AC2CD2795600683B86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				D9F0196A2CC64A8400089CF8 /* CollectionsView.swift */,
 				D9F0196C2CC6504B00089CF8 /* CollectionView.swift */,
 				D9F019702CC79EC900089CF8 /* AddToCollectionsView.swift */,
+				D90A9A792CEA5CC000CB08A6 /* CollectionCell.swift */,
+				D90A9A7B2CEA720900CB08A6 /* CreateCollectionModalView.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -323,6 +329,7 @@
 			files = (
 				D962805B2CB5C1F600AE3F2F /* PoemsView.swift in Sources */,
 				D9F019682CC6437B00089CF8 /* PoemCollectionViewModel.swift in Sources */,
+				D90A9A7C2CEA720900CB08A6 /* CreateCollectionModalView.swift in Sources */,
 				D96280762CB69B2700AE3F2F /* PoemDetailView.swift in Sources */,
 				D96280672CB65A9900AE3F2F /* Poem.swift in Sources */,
 				D9F019662CC642DB00089CF8 /* PoemCollection.swift in Sources */,
@@ -336,6 +343,7 @@
 				D962806D2CB6647600AE3F2F /* PoemViewModel.swift in Sources */,
 				D9F019712CC79EC900089CF8 /* AddToCollectionsView.swift in Sources */,
 				D96280692CB65CA400AE3F2F /* PoemAPIService.swift in Sources */,
+				D90A9A7A2CEA5CC000CB08A6 /* CollectionCell.swift in Sources */,
 				D962806B2CB6641200AE3F2F /* PoemCell.swift in Sources */,
 				D962807E2CB8880900AE3F2F /* PoemRequestType.swift in Sources */,
 				D962807C2CB866D300AE3F2F /* MainTabView.swift in Sources */,
