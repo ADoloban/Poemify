@@ -49,7 +49,7 @@ struct PoemDetailView: View {
             }
             ScrollView {
                 VStack(alignment: .center, spacing: 16) {
-                    HStack {
+                    HStack(spacing: 20) {
                         Text(poem.title)
                             .font(.system(size: 30, weight: .bold, design: .rounded))
                             .multilineTextAlignment(.center)
@@ -59,23 +59,23 @@ struct PoemDetailView: View {
                             isSelectCollectionsPresented = true
                         }) {
                             Image(systemName: collectionsViewModel.isPoemSavedInAnyCollection(poem) ? "bookmark.fill" : "bookmark")
-                                .foregroundColor(.gray)
-                                .font(.system(size: 24))
+                                .foregroundColor(Color("C6EBC5"))
+                                .font(.system(size: 8))
+                                .scaleEffect(3)
+                                .contentTransition(.symbolEffect(.replace))
                         }
                     }
                     
                     Text(poem.author)
-                        .font(.title3)
-                        .foregroundColor(.secondary)
+                        .font(.system(size: 20, weight: .bold, design: .rounded))
+                        .foregroundColor(Color("C6EBC5"))
                         .multilineTextAlignment(.center)
                     
                     Text(poem.lines.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.joined(separator: "\n"))
-                        .font(.callout)
+                        .font(.system(size: 16, weight: .medium, design: .rounded))
+                        .padding()
                         .padding(.leading, 20)
-                        .padding(.trailing, 16)
-                        .padding(.top, 16)
-                        .padding(.bottom, 16)
-                        .background(Color(.systemGray6))
+                        .background(Color(.white).opacity(0.7))
                         .cornerRadius(10)
                     
                     Spacer()
@@ -83,8 +83,8 @@ struct PoemDetailView: View {
                     HStack {
                         Spacer()
                         Text("\(poem.lines.count) lines")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
+                            .font(.system(size: 18, weight: .bold, design: .rounded))
+                            .foregroundColor(Color("C6EBC5"))
                     }
                 }
                 .padding()

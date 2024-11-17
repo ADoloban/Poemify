@@ -30,18 +30,12 @@ struct PoemCell: View {
             Text(poem.lines.prefix(3).map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.joined(separator: "\n"))
                 .font(.system(size: 17))
                 .italic()
-                .foregroundColor(.primary)
+                .foregroundColor(.black)
                 .lineLimit(3)
             
         }
         .padding()
-        .background(
-            LinearGradient(
-                gradient: Gradient(colors: [Color("9BB0C1"), Color("C6EBC5")]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        )
+        .background(Color("C6EBC5"))
         .cornerRadius(10)
         .shadow(radius: 2)
         .frame(maxWidth: .infinity)

@@ -38,7 +38,7 @@ struct PoemsView: View {
                             Image(systemName: "gearshape.fill")
                                 .font(.system(size: 22))
                                 .foregroundColor(Color("C6EBC5"))
-                                .padding(.leading)
+                                .padding(.leading, 16)
                         }
                         
                         Spacer()
@@ -60,10 +60,10 @@ struct PoemsView: View {
                                     .foregroundColor(Color("C6EBC5"))
                             }
                         }
-                        .padding(.trailing)
+                        .padding(.trailing, 16)
                     }
                 }
-                .padding(.bottom, 5)
+                .padding(.vertical, 10)
                 
                 Spacer()
                 
