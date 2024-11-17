@@ -13,60 +13,72 @@ struct CollectionsView: View {
     @State private var isAddingNewCollection = false
     
     var body: some View {
-        List {
-            ForEach(collectionsViewModel.collections) { collection in
-                NavigationLink(destination: CollectionView(collection: collection)
-                    .environmentObject(collectionsViewModel)) {
-                        Text(collection.name)
-                            .font(.headline)
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [Color("01204E"), Color("257180")]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+            
+            VStack {
+                ZStack {
+                    Text("Collections")
+                        .font(.title)
+                        .foregroundStyle(Color("C6EBC5"))
+                        .bold()
+                    
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {
+                            isAddingNewCollection = true
+                        }) {
+                            Image(systemName: "plus")
+                                .font(.system(size: 22))
+                                .foregroundColor(Color("C6EBC5"))
+                                .padding(.trailing, 16)
+                        }
                     }
-            }
-            .onDelete(perform: deleteCollection)
-        }
-        .navigationTitle("Collections")
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {
-                    isAddingNewCollection = true
-                }) {
-                    Image(systemName: "plus")
+                }
+                .padding(.vertical, 10)
+                
+                if collectionsViewModel.collections.isEmpty {
+                    Spacer()
+                    Text("No collections available")
+                        .font(.headline)
+                        .foregroundColor(Color("C6EBC5"))
+                    Spacer()
+                } else {
+                    ScrollView {
+                        LazyVStack(spacing: 10) {
+                            ForEach(collectionsViewModel.collections) { collection in
+                                NavigationLink(destination: CollectionView(collection: collection)
+                                    .environmentObject(collectionsViewModel)) {
+                                        CollectionCell(collection: collection)
+                                            .contextMenu {
+                                                Button(role: .destructive) {
+                                                    collectionsViewModel.removeCollection(collection)
+                                                } label: {
+                                                    Label("Delete", systemImage: "trash")
+                                                }
+                                            }
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                            }
+                        }
+                        .padding(.horizontal, 16)
+                    }
                 }
             }
-        }
-        .overlay {
-            ZStack {
+            .overlay {
                 if isAddingNewCollection {
-                    Color.black.opacity(0.4)
-                        .edgesIgnoringSafeArea(.all)
-                        .onTapGesture {
-                            isAddingNewCollection = false
-                        }
-                    
-                    VStack {
-                        Text("Create New Collection")
-                            .font(.headline)
-                            .padding(.top)
-                        
-                        TextField("Collection Name", text: $newCollectionName)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding(.horizontal)
-                        
-                        Button("Create") {
-                            collectionsViewModel.createCollection(name: newCollectionName)
-                            newCollectionName = ""
-                            isAddingNewCollection = false
-                        }
-                        .padding()
-                        .disabled(newCollectionName.isEmpty)
+                    CreateCollectionModalView(
+                        isPresented: $isAddingNewCollection,
+                        collectionName: $newCollectionName
+                    ) {
+                        collectionsViewModel.createCollection(name: newCollectionName)
                     }
-                    .frame(width: 300, height: 200)
-                    .background(Color(.systemBackground))
-                    .cornerRadius(20)
-                    .shadow(radius: 10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
                 }
             }
         }

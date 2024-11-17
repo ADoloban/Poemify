@@ -41,8 +41,7 @@ struct CollectionView: View {
                                     ) {
                                         EmptyView()
                                     }
-                                        .opacity(0)
-                                )
+                                        .opacity(0))
                         }
                         .onDelete(perform: deletePoem)
                     }
