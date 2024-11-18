@@ -14,7 +14,7 @@ struct CreateCollectionModalView: View {
 
     var body: some View {
         ZStack {
-            Color.black.opacity(0.4)
+            Color.black.opacity(0.6)
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
                     isPresented = false
@@ -52,7 +52,7 @@ struct CreateCollectionModalView: View {
                 .padding(.top)
             }
             .frame(width: 300, height: 200)
-            .background(Color(.white).opacity(0.4))
+            .background(Color(.gray).opacity(0.8))
             .cornerRadius(20)
             .shadow(radius: 10)
             .overlay(
