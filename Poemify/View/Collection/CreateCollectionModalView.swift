@@ -24,7 +24,7 @@ struct CreateCollectionModalView: View {
             VStack(spacing: 20) {
                 Text("Create New Collection")
                     .font(.system(size: 22, weight: .bold, design: .rounded))
-                    .foregroundStyle(Color("FD8B51"))
+                    .foregroundStyle(Color("C6EBC5"))
 
                 VStack(spacing: 20) {
                     StyledTextField(
@@ -49,10 +49,9 @@ struct CreateCollectionModalView: View {
                 .foregroundColor(collectionName.isEmpty ? Color.white.opacity(0.7) : Color("C6EBC5"))
                 .cornerRadius(20)
                 .disabled(collectionName.isEmpty)
-                .padding(.top)
             }
             .frame(width: 300, height: 200)
-            .background(Color(.gray).opacity(0.8))
+            .background(Color("257180"))
             .cornerRadius(20)
             .shadow(radius: 10)
             .overlay(

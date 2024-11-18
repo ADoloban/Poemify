@@ -25,13 +25,13 @@ struct ChangePasswordModalView: View {
             VStack(spacing: 20) {
                 Text("Update Password")
                     .font(.system(size: 22, weight: .bold, design: .rounded))
-                    .foregroundStyle(Color("FD8B51"))
+                    .foregroundStyle(Color("C6EBC5"))
                 
                 VStack(spacing: 20) {
                     StyledTextField(placeholder: "Current Password", text: $currentPassword, isSecure: true)
-                        .foregroundColor(Color("EBE3D5"))
+                        .foregroundColor(Color("C6EBC5"))
                     StyledTextField(placeholder: "New Password", text: $newPassword, isSecure: true)
-                        .foregroundColor(Color("EBE3D5"))
+                        .foregroundColor(Color("C6EBC5"))
                 }
                 .padding(.horizontal)
                 
@@ -51,7 +51,7 @@ struct ChangePasswordModalView: View {
                 .padding(.top, 20)
             }
             .frame(width: 300, height: 250)
-            .background(Color(.white).opacity(0.4))
+            .background(Color("257180"))
             .cornerRadius(20)
             .shadow(radius: 10)
             .overlay(
@@ -79,24 +79,24 @@ struct StyledTextField: View {
                 SecureField("", text: $text)
                     .placeholder(when: text.isEmpty) {
                         Text(placeholder)
-                            .foregroundStyle(Color("EBE3D5"))
+                            .foregroundStyle(Color("C6EBC5"))
                             .bold()
                     }
             } else {
                 TextField("", text: $text)
                     .keyboardType(keyboardType)
                     .autocapitalization(.none)
-                    .foregroundStyle(Color("EBE3D5"))
+                    .foregroundStyle(Color("C6EBC5"))
                     .textFieldStyle(.plain)
                     .placeholder(when: text.isEmpty) {
                         Text(placeholder)
-                            .foregroundStyle(Color("EBE3D5"))
+                            .foregroundStyle(Color("C6EBC5"))
                             .bold()
                     }
             }
             Rectangle()
                 .frame(height: 2)
-                .foregroundStyle(Color("EBE3D5"))
+                .foregroundStyle(Color("C6EBC5"))
         }
         .padding(.horizontal, 16)
     }
