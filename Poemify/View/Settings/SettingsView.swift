@@ -18,6 +18,7 @@ struct SettingsView: View {
     @State private var showAlert = false
     @State private var errorMessage: String?
     @State private var alertTitle = "Message"
+    @State private var showLogoutConfirmation = false
     
     var body: some View {
         ZStack {
@@ -57,12 +58,15 @@ struct SettingsView: View {
                         .frame(maxWidth: 200)
                         .padding()
                         .font(.system(size: 20, weight: .bold))
-                        .background(Color("FD8B51"))
+                        .background(Color("257180"))
                         .foregroundStyle(Color("EBE3D5"))
                         .cornerRadius(20)
                 }
                 
-                Button(action: logout) {
+                Button(action: {
+                    showLogoutConfirmation = true
+                    print("showLogoutConfirmation: \(showLogoutConfirmation)")
+                }) {
                     Text("Logout")
                         .frame(maxWidth: 200)
                         .padding()
@@ -89,6 +93,16 @@ struct SettingsView: View {
                         }
                     )
                 }
+            }
+            .alert(isPresented: $showLogoutConfirmation) {
+                Alert(
+                    title: Text("Confirm Logout"),
+                    message: Text("Are you sure you want to logout?"),
+                    primaryButton: .destructive(Text("Logout")) {
+                        logout()
+                    },
+                    secondaryButton: .cancel()
+                )
             }
         }
     }
