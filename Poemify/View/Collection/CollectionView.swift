@@ -10,75 +10,101 @@ import SwiftUI
 struct CollectionView: View {
     var collection: PoemCollection
     @EnvironmentObject var collectionsViewModel: PoemCollectionsViewModel
+    @Environment(\.presentationMode) var presentationMode
     @State private var isCreatingPoem = false
+    @State private var selectedPoem: Poem?
     
     var body: some View {
         ZStack {
-            VStack {
-                Text(collection.name)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.top)
-                    .padding(.horizontal)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                if collection.poems.isEmpty {
-                    Spacer()
-                    Text("No saved poems in this collection.")
-                        .foregroundColor(.gray)
-                        .multilineTextAlignment(.center)
-                    Spacer()
-                } else {
-                    List {
-                        ForEach(collection.poems, id: \.self) { poem in
-                            PoemCell(poem: poem)
-                                .padding(.vertical, 10)
-                                .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                                .background(
-                                    NavigationLink(
-                                        destination: PoemDetailView(poem: poem)
-                                            .environmentObject(collectionsViewModel)
-                                    ) {
-                                        EmptyView()
-                                    }
-                                        .opacity(0))
-                        }
-                        .onDelete(perform: deletePoem)
-                    }
-                    .listStyle(PlainListStyle())
-                }
-            }
+            LinearGradient(
+                gradient: Gradient(colors: [Color("01204E"), Color("257180")]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
             
             VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        isCreatingPoem = true
-                    }) {
-                        Image(systemName: "square.and.pencil.circle.fill")
-                            .resizable()
-                            .frame(width: 50, height: 50) // Зменшений розмір значка
-                            .foregroundColor(.blue) // Колір іконки
-                            .background(Color.white)
-                            .clipShape(Circle())
-                            .shadow(radius: 3)
+                
+                ZStack {
+                    Text(collection.name)
+                        .font(.title)
+                        .foregroundStyle(Color("C6EBC5"))
+                        .bold()
+                    
+                    HStack {
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "arrow.left")
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(Color("C6EBC5"))
+                                .padding(.leading, 16)
+                        }
+                        
+                        Spacer()
                     }
-                    .padding()
+                }
+                .padding(.vertical, 8)
+                
+                ZStack {
+                    if collection.poems.isEmpty {
+                        Spacer()
+                        Text("No saved poems in this collection.")
+                            .foregroundStyle(Color("C6EBC5"))
+                            .font(.headline)
+                        Spacer()
+                    } else {
+                        ScrollView {
+                            LazyVStack(spacing: 10) {
+                                ForEach(collection.poems, id: \.self) { poem in
+                                    NavigationLink(destination: PoemDetailView(poem: poem)
+                                        .environmentObject(collectionsViewModel)) {
+                                            PoemCell(poem: poem)
+                                        }
+                                        .buttonStyle(PlainButtonStyle()) // Щоб зберегти стиль клітинки
+                                        .contextMenu {
+                                            Button(role: .destructive) {
+                                                deletePoem(poem)
+                                            } label: {
+                                                Label("Delete", systemImage: "trash")
+                                            }
+                                        }
+                                }
+                            }
+                            .padding(.horizontal, 16)
+                        }
+                    }
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                isCreatingPoem = true
+                            }) {
+                                Image(systemName: "square.and.pencil.circle.fill")
+                                    .resizable()
+                                    .frame(width: 60, height: 60)
+                                    .foregroundColor(Color("257180"))
+                                    .background(Color("C6EBC5"))
+                                    .clipShape(Circle())
+                                    .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
+                            }
+                            .padding(.trailing, 20)
+                            .padding(.bottom, 20)
+                        }
+                    }
                 }
             }
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $isCreatingPoem) {
-            CreatePoemView(collection: collection)
-                .environmentObject(collectionsViewModel)
+            .navigationBarHidden(true)
+            .fullScreenCover(isPresented: $isCreatingPoem) {
+                CreatePoemView(collection: collection)
+                    .environmentObject(collectionsViewModel)
+            }
         }
     }
-
-    private func deletePoem(at offsets: IndexSet) {
-        for index in offsets {
-            let poemToDelete = collection.poems[index]
-            collectionsViewModel.removePoem(poemToDelete, from: collection)
-        }
+    
+    private func deletePoem(_ poem: Poem) {
+        collectionsViewModel.removePoem(poem, from: collection)
     }
 }
+
