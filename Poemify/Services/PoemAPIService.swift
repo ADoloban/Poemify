@@ -1,10 +1,3 @@
-//
-//  PoemAPIService.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 09.10.2024.
-//
-
 import Foundation
 
 class PoemAPIService {
@@ -53,7 +46,6 @@ class PoemAPIService {
                     let decodedPoems = try JSONDecoder().decode([Poem].self, from: data)
                     completion(decodedPoems)
                 } catch {
-                    print("Error decoding data: \(error)")
                     completion([])
                 }
             } else {

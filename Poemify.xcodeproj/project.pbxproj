@@ -15,6 +15,11 @@
 		D90D92B02CD281C500683B86 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D90D92AF2CD281C500683B86 /* FirebaseAuth */; };
 		D90D92B22CD281C500683B86 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D90D92B12CD281C500683B86 /* FirebaseDatabase */; };
 		D90D92B42CD281C500683B86 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D90D92B32CD281C500683B86 /* FirebaseFirestore */; };
+		D93557482D01035800CCE865 /* GeneratePoemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93557472D01035800CCE865 /* GeneratePoemView.swift */; };
+		D935574E2D01939400CCE865 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = D935574D2D01939400CCE865 /* OpenAISwift */; };
+		D93557502D01C09900CCE865 /* OpenAIAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935574F2D01C09900CCE865 /* OpenAIAPIClient.swift */; };
+		D93557562D04890A00CCE865 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = D93557552D04890A00CCE865 /* Secrets.plist */; };
+		D93557582D0489C400CCE865 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93557572D0489C400CCE865 /* Secrets.swift */; };
 		D96280592CB5C1F600AE3F2F /* PoemifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96280582CB5C1F600AE3F2F /* PoemifyApp.swift */; };
 		D962805B2CB5C1F600AE3F2F /* PoemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D962805A2CB5C1F600AE3F2F /* PoemsView.swift */; };
 		D962805D2CB5C1F700AE3F2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D962805C2CB5C1F700AE3F2F /* Assets.xcassets */; };
@@ -45,6 +50,10 @@
 		D90D92A82CD21DF800683B86 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D90D92AA2CD21E3400683B86 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		D90D92AC2CD2795600683B86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D93557472D01035800CCE865 /* GeneratePoemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePoemView.swift; sourceTree = "<group>"; };
+		D935574F2D01C09900CCE865 /* OpenAIAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIAPIClient.swift; sourceTree = "<group>"; };
+		D93557552D04890A00CCE865 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		D93557572D0489C400CCE865 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		D96280552CB5C1F600AE3F2F /* Poemify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Poemify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D96280582CB5C1F600AE3F2F /* PoemifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemifyApp.swift; sourceTree = "<group>"; };
 		D962805A2CB5C1F600AE3F2F /* PoemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemsView.swift; sourceTree = "<group>"; };
@@ -76,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D935574E2D01939400CCE865 /* OpenAISwift in Frameworks */,
 				D90D92B22CD281C500683B86 /* FirebaseDatabase in Frameworks */,
 				D90D92B02CD281C500683B86 /* FirebaseAuth in Frameworks */,
 				D90D92B42CD281C500683B86 /* FirebaseFirestore in Frameworks */,
@@ -92,6 +102,22 @@
 				D90D92AA2CD21E3400683B86 /* RegistrationView.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		D93557462D01030100CCE865 /* Generate */ = {
+			isa = PBXGroup;
+			children = (
+				D93557472D01035800CCE865 /* GeneratePoemView.swift */,
+			);
+			path = Generate;
+			sourceTree = "<group>";
+		};
+		D93557492D01862100CCE865 /* GeneratePoemViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D935574F2D01C09900CCE865 /* OpenAIAPIClient.swift */,
+			);
+			path = GeneratePoemViewModel;
 			sourceTree = "<group>";
 		};
 		D962804C2CB5C1F600AE3F2F = {
@@ -122,6 +148,7 @@
 				D962805C2CB5C1F700AE3F2F /* Assets.xcassets */,
 				D962805E2CB5C1F700AE3F2F /* Preview Content */,
 				D90D92AC2CD2795600683B86 /* GoogleService-Info.plist */,
+				D93557552D04890A00CCE865 /* Secrets.plist */,
 			);
 			path = Poemify;
 			sourceTree = "<group>";
@@ -146,6 +173,7 @@
 		D962806F2CB675BD00AE3F2F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D93557492D01862100CCE865 /* GeneratePoemViewModel */,
 				D9F019792CCBB05A00089CF8 /* Poem */,
 				D9F0197A2CCBB06400089CF8 /* Collection */,
 			);
@@ -162,6 +190,7 @@
 				D9F019732CCB9B6C00089CF8 /* Collection */,
 				D9F019742CCB9BA800089CF8 /* Search */,
 				D90D92B52CD4FF9700683B86 /* Authentication */,
+				D93557462D01030100CCE865 /* Generate */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,6 +202,7 @@
 				D96280772CB7E99A00AE3F2F /* ActivityViewController.swift */,
 				D962807D2CB8880900AE3F2F /* PoemRequestType.swift */,
 				D9B3E2E22CE6AC48002FE097 /* AuthService.swift */,
+				D93557572D0489C400CCE865 /* Secrets.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -268,6 +298,7 @@
 				D90D92AF2CD281C500683B86 /* FirebaseAuth */,
 				D90D92B12CD281C500683B86 /* FirebaseDatabase */,
 				D90D92B32CD281C500683B86 /* FirebaseFirestore */,
+				D935574D2D01939400CCE865 /* OpenAISwift */,
 			);
 			productName = Poemify;
 			productReference = D96280552CB5C1F600AE3F2F /* Poemify.app */;
@@ -299,6 +330,7 @@
 			mainGroup = D962804C2CB5C1F600AE3F2F;
 			packageReferences = (
 				D90D92AE2CD281C500683B86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D935574C2D01939400CCE865 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 			);
 			productRefGroup = D96280562CB5C1F600AE3F2F /* Products */;
 			projectDirPath = "";
@@ -317,6 +349,7 @@
 				D96280602CB5C1F700AE3F2F /* Preview Assets.xcassets in Resources */,
 				D962805D2CB5C1F700AE3F2F /* Assets.xcassets in Resources */,
 				D90D92AD2CD2795600683B86 /* GoogleService-Info.plist in Resources */,
+				D93557562D04890A00CCE865 /* Secrets.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,8 +368,10 @@
 				D9F019662CC642DB00089CF8 /* PoemCollection.swift in Sources */,
 				D9B3E2E32CE6AC48002FE097 /* AuthService.swift in Sources */,
 				D9B3E2E02CE6851D002FE097 /* ChangeCredentialsModalView.swift in Sources */,
+				D93557582D0489C400CCE865 /* Secrets.swift in Sources */,
 				D96280802CB88A2C00AE3F2F /* SearchView.swift in Sources */,
 				D9F0196D2CC6504B00089CF8 /* CollectionView.swift in Sources */,
+				D93557502D01C09900CCE865 /* OpenAIAPIClient.swift in Sources */,
 				D9F0197D2CCBBBE700089CF8 /* CreatePoemView.swift in Sources */,
 				D96280782CB7E99A00AE3F2F /* ActivityViewController.swift in Sources */,
 				D96280592CB5C1F600AE3F2F /* PoemifyApp.swift in Sources */,
@@ -344,6 +379,7 @@
 				D9F019712CC79EC900089CF8 /* AddToCollectionsView.swift in Sources */,
 				D96280692CB65CA400AE3F2F /* PoemAPIService.swift in Sources */,
 				D90A9A7A2CEA5CC000CB08A6 /* CollectionCell.swift in Sources */,
+				D93557482D01035800CCE865 /* GeneratePoemView.swift in Sources */,
 				D962806B2CB6641200AE3F2F /* PoemCell.swift in Sources */,
 				D962807E2CB8880900AE3F2F /* PoemRequestType.swift in Sources */,
 				D962807C2CB866D300AE3F2F /* MainTabView.swift in Sources */,
@@ -566,6 +602,14 @@
 				minimumVersion = 11.4.0;
 			};
 		};
+		D935574C2D01939400CCE865 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamrushy/OpenAISwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -583,6 +627,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D90D92AE2CD281C500683B86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		D935574D2D01939400CCE865 /* OpenAISwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D935574C2D01939400CCE865 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			productName = OpenAISwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

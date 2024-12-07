@@ -1,10 +1,3 @@
-//
-//  Poem.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 09.10.2024.
-//
-
 import Foundation
 
 struct Poem: Codable, Hashable {

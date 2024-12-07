@@ -1,10 +1,3 @@
-//
-//  SelectCollectionsView.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 22.10.2024.
-//
-
 import SwiftUI
 
 struct AddToCollectionsView: View {

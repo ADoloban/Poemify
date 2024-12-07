@@ -1,10 +1,3 @@
-//
-//  CollectionCell.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 17.11.2024.
-//
-
 import SwiftUI
 
 struct CollectionCell: View {

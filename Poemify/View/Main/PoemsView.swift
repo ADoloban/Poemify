@@ -1,10 +1,3 @@
-//
-//  PoemsView.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 08.10.2024.
-//
-
 import SwiftUI
 
 struct PoemsView: View {
@@ -105,7 +98,6 @@ struct PoemsView: View {
                                         .padding(.horizontal, 20)
                                 }
                             }
-                            
                         }
                     }
                 }

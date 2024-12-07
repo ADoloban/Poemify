@@ -1,10 +1,3 @@
-//
-//  CreatePoemView.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 25.10.2024.
-//
-
 import SwiftUI
 
 struct CreatePoemView: View {
@@ -17,51 +10,89 @@ struct CreatePoemView: View {
     @State private var poemText: String = ""
     
     var body: some View {
-        
-        NavigationView {
-            VStack {
-                TextField("Title", text: $title)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                
-                TextField("Author", text: $author)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                
-                TextEditor(text: $poemText)
-                    .frame(height: 200)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
-                    .padding()
-                
-                Spacer()
-                
-                Button(action: savePoem) {
-                    Text("Save Poem")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(title.isEmpty || poemText.isEmpty ? Color.gray : Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                }
-                .disabled(title.isEmpty || poemText.isEmpty)
-                .padding(.bottom)
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [Color("01204E"), Color("257180")]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+            .onTapGesture {
+                hideKeyboard()
             }
-            .navigationTitle("Create Poem")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        dismiss()
+            
+            VStack(spacing: 20) {
+                ZStack {
+                    Text("Create Poem")
+                        .font(.title)
+                        .foregroundStyle(Color("C6EBC5"))
+                        .bold()
+                    
+                    HStack {
+                        Button(action: {
+                            dismiss()
+                        }) {
+                            Text("Cancel")
+                                .font(.system(size: 18, weight: .bold, design: .rounded))
+                                .foregroundStyle(Color("C6EBC5"))
+                                .padding(.leading, 16)
+                        }
+                        
+                        Spacer()
                     }
+                }
+                .padding(.vertical, 10)
+                
+                ScrollView {
+                    VStack(spacing: 40) {
+                        StyledTextField(
+                            placeholder: "Title",
+                            text: $title
+                        )
+                        .font(.system(size: 22, weight: .bold, design: .rounded))
+                        
+                        StyledTextField(
+                            placeholder: "Author (optional)",
+                            text: $author
+                        )
+                        .font(.system(size: 22, weight: .bold, design: .rounded))
+                        
+                        TextEditor(text: $poemText)
+                            .scrollContentBackground(.hidden)
+                            .foregroundColor(Color("C6EBC5"))
+                            .font(.system(size: 18, weight: .bold, design: .rounded))
+                            .frame(height: 400)
+                            .padding(.horizontal, 8)
+                            .background(Color.clear)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color("C6EBC5"), lineWidth: 2)
+                            )
+                        
+                    }
+                    .padding(.horizontal, 16)
+                    
+                    Spacer()
+                    
+                    Button(action: savePoem) {
+                        Text("Save Poem")
+                            .font(.headline)
+                            .frame(maxWidth: 200)
+                            .padding()
+                            .background(title.isEmpty || poemText.isEmpty ? Color.gray : Color("FD8B51"))
+                            .foregroundColor(Color("C6EBC5"))
+                            .cornerRadius(20)
+                            .padding(16)
+                    }
+                    .disabled(title.isEmpty || poemText.isEmpty)
+                    .padding(.bottom, 20)
                 }
             }
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
-
     
     private func savePoem() {
         let lines = poemText.split(separator: "\n").map(String.init)
@@ -70,6 +101,10 @@ struct CreatePoemView: View {
         
         collectionsViewModel.addPoem(newPoem, to: collection)
         dismiss()
+    }
+    
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

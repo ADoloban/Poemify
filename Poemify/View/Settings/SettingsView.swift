@@ -1,10 +1,3 @@
-//
-//  SettingsView.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 11.10.2024.
-//
-
 import SwiftUI
 import FirebaseAuth
 
@@ -79,9 +72,6 @@ struct SettingsView: View {
                 Spacer()
             }
             .padding()
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text(alertTitle), message: Text(errorMessage ?? ""), dismissButton: .default(Text("OK")))
-            }
             .overlay {
                 if showModal {
                     ChangePasswordModalView(
@@ -94,15 +84,31 @@ struct SettingsView: View {
                     )
                 }
             }
-            .alert(isPresented: $showLogoutConfirmation) {
-                Alert(
-                    title: Text("Confirm Logout"),
-                    message: Text("Are you sure you want to logout?"),
-                    primaryButton: .destructive(Text("Logout")) {
-                        logout()
-                    },
-                    secondaryButton: .cancel()
-                )
+            .alert(isPresented: Binding<Bool>(
+                get: { showLogoutConfirmation || showAlert },
+                set: { newValue in
+                    if !newValue {
+                        showLogoutConfirmation = false
+                        showAlert = false
+                    }
+                }
+            )) {
+                if showLogoutConfirmation {
+                    return Alert(
+                        title: Text("Confirm Logout"),
+                        message: Text("Are you sure you want to logout?"),
+                        primaryButton: .destructive(Text("Logout")) {
+                            logout()
+                        },
+                        secondaryButton: .cancel()
+                    )
+                } else {
+                    return Alert(
+                        title: Text(alertTitle),
+                        message: Text(errorMessage ?? ""),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
             }
         }
     }
@@ -134,8 +140,4 @@ struct SettingsView: View {
             }
         }
     }
-}
-
-#Preview {
-    SettingsView()
 }

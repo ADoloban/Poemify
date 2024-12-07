@@ -1,10 +1,3 @@
-//
-//  PoemCell.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 09.10.2024.
-//
-
 import SwiftUI
 
 struct PoemCell: View {
@@ -40,8 +33,4 @@ struct PoemCell: View {
         .shadow(radius: 2)
         .frame(maxWidth: .infinity)
     }
-}
-
-#Preview {
-    PoemCell(poem: Poem(title: "fgf", author: "fgdg", lines: ["sggfd", "gfd", "gfd"], linecount: "45"))
 }

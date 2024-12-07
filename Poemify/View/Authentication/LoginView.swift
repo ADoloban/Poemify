@@ -1,10 +1,3 @@
-//
-//  LoginView.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 30.10.2024.
-//
-
 import SwiftUI
 import FirebaseAuth
 
@@ -110,7 +103,9 @@ struct LoginView: View {
             }
             .frame(width: 350)
         }
-        
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
     
     private func login() {
@@ -128,10 +123,6 @@ struct LoginView: View {
             }
         }
     }
-}
-
-#Preview {
-    LoginView(showLoginView: .constant(true))
 }
 
 extension View {

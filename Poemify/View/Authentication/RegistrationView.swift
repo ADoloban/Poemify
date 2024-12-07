@@ -1,10 +1,3 @@
-//
-//  RegistrationView.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 30.10.2024.
-//
-
 import SwiftUI
 import FirebaseAuth
 
@@ -112,6 +105,9 @@ struct RegistrationView: View {
         .fullScreenCover(isPresented: $showLoginView) {
             LoginView(showLoginView: $showLoginView)
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
     
     private func register() {
@@ -122,15 +118,10 @@ struct RegistrationView: View {
             isLoading = false
             if let error = error {
                 errorMessage = error.localizedDescription
-                print(error)
             } else {
                 self.isLoggedIn = true
                 dismiss()
             }
         }
     }
-}
-
-#Preview {
-    RegistrationView()
 }

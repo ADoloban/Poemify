@@ -1,10 +1,3 @@
-//
-//  MainTabView.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 10.10.2024.
-//
-
 import SwiftUI
 
 struct MainTabView: View {
@@ -12,7 +5,6 @@ struct MainTabView: View {
     @StateObject var poemViewModel = PoemViewModel()
     @State private var selectedTab = 0
 
-    
     var body: some View {
         ZStack {
             LinearGradient(
@@ -29,21 +21,28 @@ struct MainTabView: View {
                             .environmentObject(collectionsViewModel)
                             .environmentObject(poemViewModel)
                     }
-                } else {
+                } else if selectedTab == 1 {
                     NavigationView {
                         CollectionsView()
                             .environmentObject(collectionsViewModel)
                     }
+                } else if selectedTab == 2 {
+                    NavigationView {
+                        PoemGeneratorView()
+                            .environmentObject(collectionsViewModel)
+                    }
                 }
                 
-                HStack(spacing: 40) {
+                HStack(spacing: 30) {
                     CustomTabItem(imageName: "house.fill", title: "Poems", isActive: selectedTab == 0) {
                         selectedTab = 0
                     }
                     CustomTabItem(imageName: "bookmark.fill", title: "Collections", isActive: selectedTab == 1) {
                         selectedTab = 1
                     }
-                    
+                    CustomTabItem(imageName: "sparkles", title: "Generate", isActive: selectedTab == 2) {
+                        selectedTab = 2
+                    }
                 }
                 .shadow(radius: 10)
             }
@@ -69,6 +68,6 @@ struct MainTabView: View {
             .background(isActive ? Color("C6EBC5") : Color.clear)
             .cornerRadius(20)
         }
-        .frame(width: 120)
+        .frame(width: 100)
     }
 }

@@ -1,10 +1,3 @@
-//
-//  PoemCollectionViewModel.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 21.10.2024.
-//
-
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
@@ -19,7 +12,6 @@ class PoemCollectionsViewModel: ObservableObject {
             if !collections[index].poems.contains(poem) {
                 collections[index].poems.append(poem)
                 saveCollectionToFirestore(collections[index])
-                print("Added poem: \(poem.title) to collection \(collection.name)")
             }
         }
     }
@@ -28,7 +20,6 @@ class PoemCollectionsViewModel: ObservableObject {
         if let index = collections.firstIndex(where: { $0.id == collection.id }) {
             collections[index].poems.removeAll { $0 == poem }
             saveCollectionToFirestore(collections[index])
-            print("Removed poem: \(poem.title) from collection \(collection.name)")
         }
     }
     
@@ -41,7 +32,6 @@ class PoemCollectionsViewModel: ObservableObject {
         let newCollection = PoemCollection(id: firebaseID, name: name)
         
         collections.append(newCollection)
-        
         collectionRef.setData([
             "name": name,
             "poems": []
@@ -60,16 +50,19 @@ class PoemCollectionsViewModel: ObservableObject {
 }
 
 extension PoemCollectionsViewModel {
-
+    
     func loadCollectionsFromFirestore() {
-        guard let userID = Auth.auth().currentUser?.uid else { return }
+        guard let userID = Auth.auth().currentUser?.uid else {
+            return
+        }
+        DispatchQueue.main.async {
+            self.collections.removeAll()
+        }
         
         db.collection("users").document(userID).collection("collections").getDocuments { snapshot, error in
             if let error = error {
-                print("Error loading collections: \(error.localizedDescription)")
                 return
             }
-            
             var loadedCollections: [PoemCollection] = []
             
             for document in snapshot?.documents ?? [] {

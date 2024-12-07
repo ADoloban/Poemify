@@ -1,10 +1,3 @@
-//
-//  ChangePasswordModalView.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 14.11.2024.
-//
-
 import SwiftUI
 
 struct ChangePasswordModalView: View {

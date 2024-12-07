@@ -1,10 +1,3 @@
-//
-//  ActivityViewController.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 10.10.2024.
-//
-
 import SwiftUI
 import UIKit
 

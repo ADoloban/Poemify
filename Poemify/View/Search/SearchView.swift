@@ -1,9 +1,3 @@
-//
-//  SearchView.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 11.10.2024.
-//
 import SwiftUI
 
 struct SearchView: View {
@@ -58,7 +52,6 @@ struct SearchView: View {
                         }
                         .disabled(author.isEmpty && title.isEmpty && numberOfLines.isEmpty && resultCount.isEmpty)
                         .padding(.top, 20)
-                        
                         Spacer()
                     }
                     .padding()
@@ -78,8 +71,6 @@ struct SearchView: View {
             random: returnRandomPoems
         )
     }
-
-
 }
 
 struct CustomTextField: View {
@@ -100,15 +91,10 @@ struct CustomTextField: View {
                         .bold()
                 }
                 .font(.system(size: 25, weight: .bold, design: .rounded))
-            
             Rectangle()
                 .frame(width: 350, height: 2)
                 .foregroundStyle(Color("EBE3D5"))
         }
         .frame(width: 350)
     }
-}
-
-#Preview {
-    SearchView(isSearchActive: .constant(true), viewModel: PoemViewModel())
 }

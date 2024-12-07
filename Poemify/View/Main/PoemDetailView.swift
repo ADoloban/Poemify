@@ -1,10 +1,3 @@
-//
-//  PoemDetailView.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 09.10.2024.
-//
-
 import SwiftUI
 
 struct PoemDetailView: View {

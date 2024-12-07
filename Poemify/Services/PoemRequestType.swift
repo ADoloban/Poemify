@@ -1,10 +1,3 @@
-//
-//  PoemRequestType.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 11.10.2024.
-//
-
 import Foundation
 
 enum PoemRequestType {

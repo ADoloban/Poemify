@@ -1,10 +1,3 @@
-//
-//  CollectionView.swift
-//  Poemify
-//
-//  Created by Artem Doloban on 21.10.2024.
-//
-
 import SwiftUI
 
 struct CollectionView: View {
@@ -24,7 +17,6 @@ struct CollectionView: View {
             .ignoresSafeArea()
             
             VStack {
-                
                 ZStack {
                     Text(collection.name)
                         .font(.title)
