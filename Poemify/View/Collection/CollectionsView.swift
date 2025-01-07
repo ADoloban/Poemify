@@ -20,7 +20,7 @@ struct CollectionsView: View {
                         .font(.title)
                         .foregroundStyle(Color("C6EBC5"))
                         .bold()
-                    
+                        
                     HStack {
                         Spacer()
                         

@@ -220,7 +220,7 @@ struct PoemGeneratorView: View {
     private func createGeneratedPoem() -> Poem {
         let lines = generatedPoem.split(separator: "\n").map(String.init)
         let author = "Generated"
-        let newPoem = Poem(title: "Your own collection", author: author, lines: lines, linecount: "\(lines.count)")
+        let newPoem = Poem(title: "Your own poem", author: author, lines: lines, linecount: "\(lines.count)")
         theme = ""
         keywords = ""
         return newPoem

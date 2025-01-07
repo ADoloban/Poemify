@@ -75,7 +75,7 @@ struct PoemDetailView: View {
                     
                     HStack {
                         Spacer()
-                        Text("\(poem.lines.count) lines")
+                        Text("\(poem.cleanedLines.count) lines")
                             .font(.system(size: 18, weight: .bold, design: .rounded))
                             .foregroundColor(Color("C6EBC5"))
                     }

@@ -60,7 +60,7 @@ extension PoemCollectionsViewModel {
         }
         
         db.collection("users").document(userID).collection("collections").getDocuments { snapshot, error in
-            if let error = error {
+            if let _ = error {
                 return
             }
             var loadedCollections: [PoemCollection] = []

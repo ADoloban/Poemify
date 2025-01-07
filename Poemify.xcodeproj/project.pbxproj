@@ -112,14 +112,6 @@
 			path = Generate;
 			sourceTree = "<group>";
 		};
-		D93557492D01862100CCE865 /* GeneratePoemViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				D935574F2D01C09900CCE865 /* OpenAIAPIClient.swift */,
-			);
-			path = GeneratePoemViewModel;
-			sourceTree = "<group>";
-		};
 		D962804C2CB5C1F600AE3F2F = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +165,6 @@
 		D962806F2CB675BD00AE3F2F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				D93557492D01862100CCE865 /* GeneratePoemViewModel */,
 				D9F019792CCBB05A00089CF8 /* Poem */,
 				D9F0197A2CCBB06400089CF8 /* Collection */,
 			);
@@ -203,6 +194,7 @@
 				D962807D2CB8880900AE3F2F /* PoemRequestType.swift */,
 				D9B3E2E22CE6AC48002FE097 /* AuthService.swift */,
 				D93557572D0489C400CCE865 /* Secrets.swift */,
+				D935574F2D01C09900CCE865 /* OpenAIAPIClient.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
